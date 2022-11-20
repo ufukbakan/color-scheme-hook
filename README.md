@@ -18,7 +18,7 @@ npm install color-scheme-hook
 import { useDarkMode, useLightMode } from "color-scheme-hook";
 
 export default function MyReactComponent(){
-    const [isDarkMode, toggleColorScheme] = useDarkMode();  
-    const [isLightMode, toggleColorScheme] = useLightMode();
+    const [isDarkMode, toggleColorScheme, resetPreference] = useDarkMode();  
+    const [isLightMode, toggleColorScheme, resetPreference] = useLightMode();
 }
 ```

@@ -6,7 +6,9 @@ function setLightMode() {
         writable: true,
         value: (query: string) => {
             return {
-                matches: query.includes("light")
+                matches: query.includes("light"),
+                addEventListener: ()=>{},
+                removeEventListener: ()=>{}
             }
         }
     });
@@ -17,7 +19,9 @@ function setDarkMode() {
         writable: true,
         value: (query: string) => {
             return {
-                matches: query.includes("dark")
+                matches: query.includes("dark"),
+                addEventListener: ()=>{},
+                removeEventListener: ()=>{}
             }
         }
     });
@@ -29,8 +33,8 @@ test("Light mode test", () => {
     const darkModeHook = renderHook(() => useDarkMode())
     const lightModeHook = renderHook(() => useLightMode())
 
-    const [isDarkMode, toggleColorScheme] = darkModeHook.result.current;
-    const [isLightMode, _] = lightModeHook.result.current;
+    const [isDarkMode, toggleColorScheme, resetPreference] = darkModeHook.result.current;
+    const [isLightMode, ,] = lightModeHook.result.current;
 
     expect(isDarkMode).toEqual(false);
     expect(isLightMode).toEqual(true);
@@ -41,6 +45,13 @@ test("Light mode test", () => {
         expect(isDarkMode).toEqual(true);
         expect(isLightMode).toEqual(false);
     }, 1000);
+
+    act(()=> resetPreference());
+
+    setTimeout(() => {
+        expect(isDarkMode).toEqual(false);
+        expect(isLightMode).toEqual(true);
+    }, 1000);
 });
 
 test("Dark mode test", () => {
@@ -49,8 +60,8 @@ test("Dark mode test", () => {
     const darkModeHook = renderHook(() => useDarkMode())
     const lightModeHook = renderHook(() => useLightMode())
 
-    const [isDarkMode, _] = darkModeHook.result.current;
-    const [isLightMode, toggleColorScheme] = lightModeHook.result.current;
+    const [isDarkMode,,] = darkModeHook.result.current;
+    const [isLightMode, toggleColorScheme, resetPreference] = lightModeHook.result.current;
 
     expect(isDarkMode).toEqual(true);
     expect(isLightMode).toEqual(false);
@@ -60,5 +71,12 @@ test("Dark mode test", () => {
     setTimeout(() => {
         expect(isDarkMode).toEqual(false);
         expect(isLightMode).toEqual(true);
+    }, 1000);
+
+    act(()=> resetPreference());
+
+    setTimeout(() => {
+        expect(isDarkMode).toEqual(true);
+        expect(isLightMode).toEqual(false);
     }, 1000);
 });
