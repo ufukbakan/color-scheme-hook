@@ -1,7 +1,5 @@
 # coverage
-coverage/**
-!coverage/badge-*
-
+coverage
 # tsc out:
 out
 
