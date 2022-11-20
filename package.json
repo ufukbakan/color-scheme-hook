@@ -1,6 +1,6 @@
 {
   "name": "color-scheme-hook",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "React hook for system color scheme.",
   "main": "index.ts",
   "scripts": {
