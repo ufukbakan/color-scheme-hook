@@ -1,0 +1,11 @@
+{
+    "testMatch": [
+        "**/test/**/*.test.*"
+    ],
+    "testEnvironment": "jsdom",
+    "coverageReporters": [
+        "text",
+        "lcov",
+        "json-summary"
+    ]
+}
