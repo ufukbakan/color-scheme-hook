@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export function useDarkMode(): [boolean, () => void, () => void] {
     const mql = window.matchMedia("(prefers-color-scheme: dark)");
-    const [isDarkMode, setIsDarkMode] = useState(mql.matches);
+    const [isDarkMode, setIsDarkMode] = useState(isPreferredColorScheme("dark"));
 
     const toggleColorScheme = () => {
         const newValue = isDarkMode ? "light" : "dark";
@@ -29,7 +29,7 @@ export function useDarkMode(): [boolean, () => void, () => void] {
 
 export function useLightMode(): [boolean, () => void, () => void] {
     const mql = window.matchMedia("(prefers-color-scheme: light)");
-    const [isLightMode, setIsLightMode] = useState(mql.matches);
+    const [isLightMode, setIsLightMode] = useState(isPreferredColorScheme("light"));
 
     const toggleColorScheme = () => {
         const newValue = isLightMode ? "dark" : "light";
