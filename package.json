@@ -1,6 +1,6 @@
 {
   "name": "color-scheme-hook",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "System color scheme matcher, getter only React hook.",
   "main": "index.ts",
   "scripts": {
@@ -9,6 +9,7 @@
     "coverage": "jest --coverage && jest-coverage-badges-ts"
   },
   "type": "module",
+  "homepage": "https://github.com/ufukbakan/color-scheme-hook#readme",
   "keywords": [
     "dark",
     "mode",
