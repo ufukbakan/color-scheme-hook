@@ -4,13 +4,13 @@ export function useDarkMode(): [boolean, () => void, () => void] {
     const mql = window.matchMedia("(prefers-color-scheme: dark)");
     const [isDarkMode, setIsDarkMode] = useState(isPreferredColorScheme("dark"));
 
-    const toggleColorScheme = () => {
+    function toggleColorScheme() {
         const newValue = isDarkMode ? "light" : "dark";
         setIsDarkMode(!isDarkMode);
         localStorage.setItem("preferred-color-scheme", newValue);
     }
 
-    const resetPreference = () => {
+    function resetPreference() {
         localStorage.removeItem("preferred-color-scheme");
         setIsDarkMode(isPreferredColorScheme("dark"));
     }
@@ -31,13 +31,13 @@ export function useLightMode(): [boolean, () => void, () => void] {
     const mql = window.matchMedia("(prefers-color-scheme: light)");
     const [isLightMode, setIsLightMode] = useState(isPreferredColorScheme("light"));
 
-    const toggleColorScheme = () => {
+    function toggleColorScheme() {
         const newValue = isLightMode ? "dark" : "light";
         setIsLightMode(!isLightMode);
         localStorage.setItem("preferred-color-scheme", newValue);
     }
 
-    const resetPreference = () => {
+    function resetPreference() {
         localStorage.removeItem("preferred-color-scheme");
         setIsLightMode(isPreferredColorScheme("light"));
     }
