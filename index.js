@@ -21,11 +21,11 @@ function useDarkMode() {
     function toggleColorScheme() {
         const newValue = isDarkMode ? "light" : "dark";
         setIsDarkMode(!isDarkMode);
-        global.localstorage?.setItem("preferred-color-scheme", newValue);
+        global.localStorage?.setItem("preferred-color-scheme", newValue);
     }
 
     function resetPreference() {
-        global.localstorage?.removeItem("preferred-color-scheme");
+        global.localStorage?.removeItem("preferred-color-scheme");
         setIsDarkMode(isPreferredColorScheme("dark"));
     }
 
@@ -49,11 +49,11 @@ function useLightMode() {
     function toggleColorScheme() {
         const newValue = isLightMode ? "dark" : "light";
         setIsLightMode(!isLightMode);
-        global.localstorage?.setItem("preferred-color-scheme", newValue);
+        global.localStorage?.setItem("preferred-color-scheme", newValue);
     }
 
     function resetPreference() {
-        global.localstorage?.removeItem("preferred-color-scheme");
+        global.localStorage?.removeItem("preferred-color-scheme");
         setIsLightMode(isPreferredColorScheme("light"));
     }
 
@@ -71,8 +71,8 @@ function useLightMode() {
 
 function isPreferredColorScheme(value) {
     var global = initGlobal();
-    return global.localstorage?.getItem("preferred-color-scheme") ?
-        global.localstorage?.getItem("preferred-color-scheme") == value :
+    return global.localStorage?.getItem("preferred-color-scheme") ?
+        global.localStorage?.getItem("preferred-color-scheme") == value :
         global.window?.matchMedia(`(prefers-color-scheme: ${value})`).matches
 }
 
