@@ -1,7 +1,7 @@
 const { useEffect, useState } = require("react");
 
 function useDarkMode() {
-    const mql = window.matchMedia("(prefers-color-scheme: dark)");
+    const mql = global.window?.matchMedia("(prefers-color-scheme: dark)");
     const [isDarkMode, setIsDarkMode] = useState(isPreferredColorScheme("dark"));
 
     function toggleColorScheme() {
@@ -28,7 +28,7 @@ function useDarkMode() {
 }
 
 function useLightMode() {
-    const mql = window.matchMedia("(prefers-color-scheme: light)");
+    const mql = global.window?.matchMedia("(prefers-color-scheme: light)");
     const [isLightMode, setIsLightMode] = useState(isPreferredColorScheme("light"));
 
     function toggleColorScheme() {
@@ -57,7 +57,7 @@ function useLightMode() {
 function isPreferredColorScheme(value) {
     return localStorage.getItem("preferred-color-scheme") ?
         localStorage.getItem("preferred-color-scheme") == value :
-        window.matchMedia(`(prefers-color-scheme: ${value})`).matches
+        global.window?.matchMedia(`(prefers-color-scheme: ${value})`).matches
 }
 
 module.exports = {
