@@ -1,4 +1,7 @@
 const { useEffect, useState } = require("react");
+const global = global ?? {};
+global.window = window ?? global.window ?? undefined;
+
 
 function useDarkMode() {
     const mql = global.window?.matchMedia("(prefers-color-scheme: dark)");
