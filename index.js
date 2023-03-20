@@ -1,7 +1,7 @@
 const { useEffect, useState } = require("react");
 
 function initGlobal() {
-    const newGlobal = { window: undefined, localStorage: undefined };
+    let newGlobal = { window: undefined, localStorage: undefined };
     if(typeof global !== "undefined"){
         newGlobal = global;
     }
