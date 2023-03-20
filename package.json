@@ -1,6 +1,6 @@
 {
   "name": "color-scheme-hook",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "React hook to detect and toggle color scheme.",
   "main": "index.ts",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "jest",
     "coverage": "jest --coverage && jest-coverage-badges-ts"
   },
-  "type": "module",
+  "type": "commonjs",
   "homepage": "https://github.com/ufukbakan/color-scheme-hook#readme",
   "keywords": [
     "dark",

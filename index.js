@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+const { useEffect, useState } = require("react");
 
-export function useDarkMode(): [boolean, () => void, () => void] {
+export function useDarkMode() {
     const mql = window.matchMedia("(prefers-color-scheme: dark)");
     const [isDarkMode, setIsDarkMode] = useState(isPreferredColorScheme("dark"));
 
@@ -20,14 +20,14 @@ export function useDarkMode(): [boolean, () => void, () => void] {
     }
 
     useEffect(() => {
-        mql.removeEventListener("change", eventListener);
         mql.addEventListener("change", eventListener);
+        return () => mql.removeEventListener("change", eventListener);
     }, []);
 
     return [isDarkMode, toggleColorScheme, resetPreference];
 }
 
-export function useLightMode(): [boolean, () => void, () => void] {
+export function useLightMode() {
     const mql = window.matchMedia("(prefers-color-scheme: light)");
     const [isLightMode, setIsLightMode] = useState(isPreferredColorScheme("light"));
 
@@ -47,14 +47,14 @@ export function useLightMode(): [boolean, () => void, () => void] {
     }
 
     useEffect(() => {
-        mql.removeEventListener("change", eventListener);
         mql.addEventListener("change", eventListener);
+        return () => mql.removeEventListener("change", eventListener);
     }, []);
 
     return [isLightMode, toggleColorScheme, resetPreference];
 }
 
-function isPreferredColorScheme(value: string) {
+function isPreferredColorScheme(value) {
     return localStorage.getItem("preferred-color-scheme") ?
         localStorage.getItem("preferred-color-scheme") == value :
         window.matchMedia(`(prefers-color-scheme: ${value})`).matches
