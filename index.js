@@ -1,9 +1,13 @@
 const { useEffect, useState } = require("react");
-const global = global ?? {};
-global.window = window ?? global.window ?? undefined;
+
+function initGlobal() {
+    var global = global ?? {};
+    global.window = window ?? global.window ?? undefined;
+}
 
 
 function useDarkMode() {
+    initGlobal();
     const mql = global.window?.matchMedia("(prefers-color-scheme: dark)");
     const [isDarkMode, setIsDarkMode] = useState(isPreferredColorScheme("dark"));
 
@@ -31,6 +35,7 @@ function useDarkMode() {
 }
 
 function useLightMode() {
+    initGlobal();
     const mql = global.window?.matchMedia("(prefers-color-scheme: light)");
     const [isLightMode, setIsLightMode] = useState(isPreferredColorScheme("light"));
 
@@ -58,6 +63,7 @@ function useLightMode() {
 }
 
 function isPreferredColorScheme(value) {
+    initGlobal();
     return global.localstorage?.getItem("preferred-color-scheme") ?
         global.localstorage?.getItem("preferred-color-scheme") == value :
         global.window?.matchMedia(`(prefers-color-scheme: ${value})`).matches
