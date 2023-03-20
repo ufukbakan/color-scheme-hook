@@ -1,6 +1,6 @@
 {
   "name": "color-scheme-hook",
-  "version": "3.6.0",
+  "version": "3.7.0",
   "description": "React hook to detect and toggle color scheme.",
   "main": "index.js",
   "scripts": {

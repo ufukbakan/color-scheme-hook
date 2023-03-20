@@ -1,10 +1,13 @@
 const { useEffect, useState } = require("react");
 
 function initGlobal() {
-    const newGlobal = global ?? { window: undefined, localStorage: undefined };
-    if (typeof window !== "undefined" || typeof newGlobal.window !== "undefined") {
-        newGlobal.window = window ?? newGlobal.window ?? undefined;
-        newGlobal.localStorage = window.localStorage ?? newGlobal.window.localStorage ?? undefined;
+    const newGlobal = { window: undefined, localStorage: undefined };
+    if(typeof global !== "undefined"){
+        newGlobal = global;
+    }
+    if (typeof window !== "undefined" && typeof newGlobal.window === "undefined") {
+        newGlobal.window = window ?? undefined;
+        newGlobal.localStorage = window.localStorage ?? undefined;
     }
     return newGlobal;
 }
